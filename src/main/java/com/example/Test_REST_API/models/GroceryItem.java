@@ -3,9 +3,8 @@ package com.example.Test_REST_API.models;
 import org.springframework.data.annotation.Id;
 
 
-public class grocerryList {
+public class GroceryItem {
     @Id
-
     private  long id;
     private String name;
     private  String quantity;
@@ -44,7 +43,12 @@ public class grocerryList {
 
     private  String category;
 
-    public grocerryList(long id, String name, String quantity, String category) {
+    public GroceryItem(String name, String quantity, String category) {
+        this.name = name;
+        this.quantity = quantity;
+        this.category = category;
+    }
+    public GroceryItem(Long id, String name, String quantity, String category) {
         this.id = id;
         this.name = name;
         this.quantity = quantity;
