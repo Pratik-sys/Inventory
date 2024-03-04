@@ -1,19 +1,20 @@
 package com.example.Test_REST_API.models;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 
 
 public class GroceryItem {
     @Id
-    private  long id;
+    private ObjectId id;
     private String name;
     private  String quantity;
 
-    public long getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 
@@ -48,7 +49,7 @@ public class GroceryItem {
         this.quantity = quantity;
         this.category = category;
     }
-    public GroceryItem(Long id, String name, String quantity, String category) {
+    public GroceryItem(ObjectId id, String name, String quantity, String category) {
         this.id = id;
         this.name = name;
         this.quantity = quantity;
