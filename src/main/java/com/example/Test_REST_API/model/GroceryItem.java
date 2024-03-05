@@ -3,7 +3,6 @@ package com.example.Test_REST_API.model;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 
-
 public class GroceryItem {
     @Id
     private String id;

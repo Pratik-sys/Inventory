@@ -5,6 +5,8 @@ import com.example.Test_REST_API.service.groceryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -19,5 +21,10 @@ public class groceryController {
     public ResponseEntity<List<GroceryItem>> getAllItems(){
         return  ResponseEntity.ok().body(gs.getAllGroceries());
     }
+    @PostMapping("/add-items")
+    public  ResponseEntity<GroceryItem> addItems(@RequestBody GroceryItem groceryItem){
+        return ResponseEntity.ok().body(gs.addItems(groceryItem));
+    }
+
 
 }

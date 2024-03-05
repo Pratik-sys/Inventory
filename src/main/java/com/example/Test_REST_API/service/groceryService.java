@@ -15,4 +15,7 @@ public class groceryService {
     public List<GroceryItem> getAllGroceries(){
         return groceryRepo.findAll();
     }
+    public  GroceryItem addItems(GroceryItem groceryItem){
+        return groceryRepo.save(groceryItem);
+    }
 }
