@@ -1,4 +1,4 @@
-package com.example.Test_REST_API.models;
+package com.example.Test_REST_API.model;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
@@ -6,15 +6,19 @@ import org.springframework.data.annotation.Id;
 
 public class GroceryItem {
     @Id
-    private ObjectId id;
+    private String id;
     private String name;
     private  String quantity;
 
-    public ObjectId getId() {
+    public GroceryItem() {
+
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(ObjectId id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -49,7 +53,7 @@ public class GroceryItem {
         this.quantity = quantity;
         this.category = category;
     }
-    public GroceryItem(ObjectId id, String name, String quantity, String category) {
+    public GroceryItem(String id, String name, String quantity, String category) {
         this.id = id;
         this.name = name;
         this.quantity = quantity;

@@ -1,6 +1,6 @@
 package com.example.Test_REST_API;
 
-import com.example.Test_REST_API.models.GroceryItem;
+import com.example.Test_REST_API.model.GroceryItem;
 import com.example.Test_REST_API.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -15,13 +15,19 @@ public class TestRestApiApplication implements CommandLineRunner {
 	private ItemRepository groceryItemRepo;
 	public static void main(String[] args) {
 		SpringApplication.run(TestRestApiApplication.class, args);
+
 	}
 
+	@Autowired
+	private  ItemRepository ip;
 	@Override
 	public void run(String... args) throws Exception {
-		saveGroceryItem();
-	}
-	void saveGroceryItem(){
-		groceryItemRepo.save(new GroceryItem("test_again","6", "testingsss"));
+		GroceryItem gs = new GroceryItem();
+		gs.setName("Pratik");
+		gs.setQuantity("6");
+		gs.setCategory("testing");
+		ip.save(gs);
+
+
 	}
 }
