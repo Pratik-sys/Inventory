@@ -5,7 +5,6 @@ import com.example.Test_REST_API.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -21,25 +20,24 @@ public class groceryService {
         return groceryRepo.save(groceryItem);
     }
     public GroceryItem updateItem(String id, GroceryItem groceryItem) throws Exception {
-        Optional<GroceryItem> groceryItemdb = groceryRepo.findById(id);
-        if(groceryItemdb.isPresent()){
-            GroceryItem _updateitem = groceryItemdb.get();
-            _updateitem.setName(groceryItem.getName());
-            _updateitem.setQuantity((groceryItem.getQuantity()));
-            _updateitem.setCategory((groceryItem.getCategory()));
-            groceryRepo.save(_updateitem);
-            return _updateitem;
+        Optional<GroceryItem> itemDB = groceryRepo.findById(id);
+        if(itemDB.isPresent()){
+            GroceryItem _itemUpdateDB = itemDB.get();
+            _itemUpdateDB.setName(groceryItem.getName());
+            _itemUpdateDB.setQuantity((groceryItem.getQuantity()));
+            _itemUpdateDB.setCategory((groceryItem.getCategory()));
+            groceryRepo.save(_itemUpdateDB);
+            return _itemUpdateDB;
         }
         else {
             throw new Exception("Record not found with id : " + id);
             }
         }
         public ResponseEntity<String> deleteItem(String id) throws Exception {
-            Optional<GroceryItem> groceryItemdb = groceryRepo.findById(id);
-            if (groceryItemdb.isPresent()){
+            Optional<GroceryItem> itemDB = groceryRepo.findById(id);
+            if (itemDB.isPresent()){
                 groceryRepo.deleteById(id);
                 return  ResponseEntity.ok().body("Item deleted with id " + id);
-
             }
             else{throw  new Exception();}
         }
