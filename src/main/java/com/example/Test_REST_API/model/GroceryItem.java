@@ -1,6 +1,4 @@
 package com.example.Test_REST_API.model;
-
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 
 public class GroceryItem {
@@ -8,10 +6,7 @@ public class GroceryItem {
     private String id;
     private String name;
     private  String quantity;
-
-    public GroceryItem() {
-
-    }
+    private  String category;
 
     public String getId() {
         return id;
@@ -44,8 +39,6 @@ public class GroceryItem {
     public void setCategory(String category) {
         this.category = category;
     }
-
-    private  String category;
 
     public GroceryItem(String name, String quantity, String category) {
         this.name = name;
