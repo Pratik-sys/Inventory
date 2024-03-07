@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class groceryService {
@@ -18,4 +19,21 @@ public class groceryService {
     public  GroceryItem addItems(GroceryItem groceryItem){
         return groceryRepo.save(groceryItem);
     }
-}
+    public GroceryItem updateItem(String id, GroceryItem groceryItem) throws Exception {
+        Optional<GroceryItem> groceryItemdb = groceryRepo.findById(id);
+        if(groceryItemdb.isPresent()){
+            GroceryItem _updateitem = groceryItemdb.get();
+            _updateitem.setName(groceryItem.getName());
+            _updateitem.setQuantity((groceryItem.getQuantity()));
+            _updateitem.setCategory((groceryItem.getCategory()));
+            groceryRepo.save(_updateitem);
+            return _updateitem;
+        }
+        else {
+            throw new Exception("Record not found with id : " + id);
+            }
+        }
+
+
+    }
+
