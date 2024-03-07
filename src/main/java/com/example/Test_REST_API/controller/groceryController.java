@@ -27,5 +27,9 @@ public class groceryController {
     public ResponseEntity<GroceryItem> updateItems(@PathVariable("id") String id, @RequestBody GroceryItem groceryItem) throws Exception {
         return ResponseEntity.ok().body(gs.updateItem(id, groceryItem));
     }
+    @DeleteMapping("/item-delete/{id}")
+    public ResponseEntity deleteItem(@PathVariable("id") String id) throws Exception {
+        return ResponseEntity.ok().body(gs.deleteItem(id));
+    }
 
 }

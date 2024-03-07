@@ -3,6 +3,7 @@ package com.example.Test_REST_API.service;
 import com.example.Test_REST_API.model.GroceryItem;
 import com.example.Test_REST_API.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,7 +34,14 @@ public class groceryService {
             throw new Exception("Record not found with id : " + id);
             }
         }
+        public ResponseEntity<String> deleteItem(String id) throws Exception {
+            Optional<GroceryItem> groceryItemdb = groceryRepo.findById(id);
+            if (groceryItemdb.isPresent()){
+                groceryRepo.deleteById(id);
+                return  ResponseEntity.ok().body("Item deleted with id " + id);
 
-
+            }
+            else{throw  new Exception();}
+        }
     }
 
