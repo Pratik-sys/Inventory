@@ -5,7 +5,7 @@ public class GroceryItem {
     @Id
     private String id;
     private String name;
-    private  String quantity;
+    private  int quantity;
     private  String category;
 
     public String getId() {
@@ -24,11 +24,11 @@ public class GroceryItem {
         this.name = name;
     }
 
-    public String getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(String quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
@@ -40,12 +40,12 @@ public class GroceryItem {
         this.category = category;
     }
 
-    public GroceryItem(String name, String quantity, String category) {
+    public GroceryItem(String name, int quantity, String category) {
         this.name = name;
         this.quantity = quantity;
         this.category = category;
     }
-    public GroceryItem(String id, String name, String quantity, String category) {
+    public GroceryItem(String id, String name, int quantity, String category) {
         this.id = id;
         this.name = name;
         this.quantity = quantity;
