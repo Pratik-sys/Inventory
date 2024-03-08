@@ -1,7 +1,10 @@
 package com.example.Test_REST_API.model;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.data.annotation.Id;
-import java.time.LocalDateTime;
+import org.springframework.data.mongodb.core.mapping.Document;
+import java.util.Date;
 
+@Document
 public class GroceryItem {
     @Id
     private String id;
@@ -10,7 +13,8 @@ public class GroceryItem {
     private String category;
     private double price;
     private boolean StockAvailability;
-    private  LocalDateTime createdTime;
+   @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone="Asia/Kolkata")
+    private Date createdTime = new Date();
 
     public String getId() {
         return id;
@@ -60,20 +64,20 @@ public class GroceryItem {
         StockAvailability = stockAvailability;
     }
 
-    public LocalDateTime getCreatedTime() {
+    public Date getCreatedTime() {
         return createdTime;
     }
 
-    public void setCreatedTime(LocalDateTime createdTime) {
+    public void setCreatedTime(Date createdTime) {
         this.createdTime = createdTime;
     }
 
-    public GroceryItem(String name, int quantity, String category, double price, boolean stockAvailability, LocalDateTime createdTime) {
+    public GroceryItem(String name, int quantity, String category, double price, boolean stockAvailability, Date createdTime) {
         this.name = name;
         this.quantity = quantity;
         this.category = category;
         this.price = price;
         StockAvailability = stockAvailability;
-        this.createdTime = createdTime;
+        this.createdTime = new Date();
     }
 }
