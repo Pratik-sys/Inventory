@@ -30,5 +30,9 @@ public class groceryController {
     public ResponseEntity deleteItem(@PathVariable("id") String id) throws Exception {
         return ResponseEntity.ok().body(gs.deleteItem(id));
     }
+    @GetMapping("/find-category/{category}")
+    public  ResponseEntity<List<GroceryItem>> getByCategory(@PathVariable("category") String category){
+        return  ResponseEntity.ok().body(gs.finByCategory(category));
+    }
 
 }

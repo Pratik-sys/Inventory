@@ -44,5 +44,10 @@ public class groceryService {
             }
             else{throw  new Exception();}
         }
+        public  List<GroceryItem> finByCategory(String category){
+            return  groceryRepo.findByCategory(category);
+
+        }
+
     }
 
