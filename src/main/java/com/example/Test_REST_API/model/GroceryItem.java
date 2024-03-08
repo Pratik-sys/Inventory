@@ -12,7 +12,7 @@ public class GroceryItem {
     private int quantity;
     private String category;
     private double price;
-    private boolean StockAvailability;
+    private boolean stockAvailability;
    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone="Asia/Kolkata")
     private Date createdTime = new Date();
 
@@ -57,11 +57,11 @@ public class GroceryItem {
     }
 
     public boolean isStockAvailability() {
-        return StockAvailability;
+        return stockAvailability;
     }
 
     public void setStockAvailability(boolean stockAvailability) {
-        StockAvailability = stockAvailability;
+        this.stockAvailability = stockAvailability;
     }
 
     public Date getCreatedTime() {
@@ -77,7 +77,7 @@ public class GroceryItem {
         this.quantity = quantity;
         this.category = category;
         this.price = price;
-        StockAvailability = stockAvailability;
+        this.stockAvailability = stockAvailability;
         this.createdTime = new Date();
     }
 }

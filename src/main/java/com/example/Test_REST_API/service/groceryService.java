@@ -23,9 +23,12 @@ public class groceryService {
         Optional<GroceryItem> itemDB = groceryRepo.findById(id);
         if(itemDB.isPresent()){
             GroceryItem _itemUpdateDB = itemDB.get();
+            System.out.println(itemDB.get().getCategory());
             _itemUpdateDB.setName(groceryItem.getName());
             _itemUpdateDB.setQuantity((groceryItem.getQuantity()));
             _itemUpdateDB.setCategory((groceryItem.getCategory()));
+            _itemUpdateDB.setPrice(groceryItem.getPrice());
+            _itemUpdateDB.setStockAvailability(groceryItem.isStockAvailability());
             groceryRepo.save(_itemUpdateDB);
             return _itemUpdateDB;
         }
