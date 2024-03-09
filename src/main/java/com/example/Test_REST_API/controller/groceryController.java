@@ -35,4 +35,9 @@ public class groceryController {
         return  ResponseEntity.ok().body(gs.finByCategory(category));
     }
 
+    @GetMapping("/stocks")
+    public  ResponseEntity<List<GroceryItem>> getByAvailability(@RequestParam("stockAvailability") boolean stockAvailability){
+    return  ResponseEntity.ok().body(gs.findByAvalibility(stockAvailability));
+    }
+
 }

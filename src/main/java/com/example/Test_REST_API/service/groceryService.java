@@ -3,6 +3,8 @@ package com.example.Test_REST_API.service;
 import com.example.Test_REST_API.model.GroceryItem;
 import com.example.Test_REST_API.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.repository.Query;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -47,6 +49,10 @@ public class groceryService {
         public  List<GroceryItem> finByCategory(String category){
             return  groceryRepo.findByCategory(category);
 
+        }
+        public  List<GroceryItem> findByAvalibility(boolean stockAvailability){
+
+            return groceryRepo.findBystockAvailability(stockAvailability);
         }
 
     }
