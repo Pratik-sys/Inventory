@@ -21,15 +21,6 @@ public class GroceryItem {
     private String category;
     private double price;
     private boolean stockAvailability;
-   @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone="Asia/Kolkata")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Kolkata")
     private Date createdTime = new Date();
-
-//    public GroceryItem(String name, int quantity, String category, double price, boolean stockAvailability, Date createdTime) {
-//        this.name = name;
-//        this.quantity = quantity;
-//        this.category = category;
-//        this.price = price;
-//        this.stockAvailability = stockAvailability;
-//        this.createdTime = new Date();
-//    }
 }

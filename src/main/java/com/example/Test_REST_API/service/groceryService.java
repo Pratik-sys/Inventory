@@ -1,5 +1,4 @@
 package com.example.Test_REST_API.service;
-
 import com.example.Test_REST_API.model.GroceryItem;
 import com.example.Test_REST_API.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +22,6 @@ public class groceryService {
         Optional<GroceryItem> itemDB = groceryRepo.findById(id);
         if(itemDB.isPresent()){
             GroceryItem _itemUpdateDB = itemDB.get();
-            System.out.println(itemDB.get().getCategory());
             _itemUpdateDB.setName(groceryItem.getName());
             _itemUpdateDB.setQuantity((groceryItem.getQuantity()));
             _itemUpdateDB.setCategory((groceryItem.getCategory()));
