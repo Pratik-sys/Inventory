@@ -13,7 +13,7 @@ import java.util.Date;
 @Document
 @AllArgsConstructor
 @NoArgsConstructor
-public class GroceryItem {
+public class productItem {
     @Id
     private String id;
     private String name;
