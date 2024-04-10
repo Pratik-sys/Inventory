@@ -1,4 +1,4 @@
-package com.example.Test_REST_API.model;
+package com.example.Inventory.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,7 +13,7 @@ import java.util.Date;
 @Document
 @AllArgsConstructor
 @NoArgsConstructor
-public class productItem {
+public class Product {
     @Id
     private String id;
     private String name;
