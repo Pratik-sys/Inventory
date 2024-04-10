@@ -25,8 +25,9 @@ public class ProductController {
         return ResponseEntity.ok().body(productService.updateItem(id, Product));
     }
     @DeleteMapping("/item-delete/{id}")
-    public ResponseEntity<String> deleteItem(@PathVariable("id") String id) throws Exception {
-        return ResponseEntity.ok().body(productService.deleteItem(id));
+    public ResponseEntity<String> deleteItem(@PathVariable("id") String id) {
+        productService.deleteItem(id);
+        return ResponseEntity.ok().body("User successfully deleted!");
     }
     @GetMapping("/find-category/{category}")
     public  ResponseEntity<List<Product>> getByCategory(@PathVariable("category") String category){
