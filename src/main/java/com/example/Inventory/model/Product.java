@@ -15,4 +15,7 @@ public class Product {
     private double price;
     private boolean stockAvailability;
     private Date createdTime = new Date();
+    private  Date lastUpdateTime = new Date();
+
+
 }
