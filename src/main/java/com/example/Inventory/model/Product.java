@@ -1,5 +1,4 @@
 package com.example.Inventory.model;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -15,6 +14,5 @@ public class Product {
     private String category;
     private double price;
     private boolean stockAvailability;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Kolkata")
     private Date createdTime = new Date();
 }

@@ -1,4 +1,5 @@
 package com.example.Inventory.service;
+import com.example.Inventory.dto.ProductAddDTO;
 import com.example.Inventory.model.Product;
 import com.example.Inventory.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,7 @@ import java.util.Optional;
 
 public interface ProductService {
     List<Product> getAllGroceries();
-    Product addItems(Product Product);
+    ProductAddDTO addProducts(ProductAddDTO productAddDTO);
     List<Product> finByCategory(String category);
     List<Product> findByAvailability(boolean stockAvailability);
     Product updateItem(String id, Product Product);

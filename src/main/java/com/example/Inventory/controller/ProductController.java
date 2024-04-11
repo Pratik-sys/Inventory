@@ -1,4 +1,5 @@
 package com.example.Inventory.controller;
+import com.example.Inventory.dto.ProductAddDTO;
 import com.example.Inventory.model.Product;
 import com.example.Inventory.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +19,8 @@ public class ProductController {
         return  ResponseEntity.ok().body(productService.getAllGroceries());
     }
     @PostMapping("/add")
-    public  ResponseEntity<Product> addItems(@RequestBody Product Product){
-        return ResponseEntity.ok().body(productService.addItems(Product));
+    public  ResponseEntity<ProductAddDTO> addItems(@RequestBody ProductAddDTO productAddDTO){
+        return ResponseEntity.ok().body(productService.addProducts(productAddDTO));
     }
     @PutMapping("/update/{id}")
     public ResponseEntity<Product> updateItems(@PathVariable("id") String id, @RequestBody Product Product){

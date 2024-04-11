@@ -2,6 +2,8 @@ package com.example.Inventory.dto;
 
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 public class ProductUpdateDTO {
     private String name;
