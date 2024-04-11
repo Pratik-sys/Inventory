@@ -16,28 +16,28 @@ public class ProductController {
     private ProductService productService;
 
     @GetMapping("/listAll")
-    public ResponseEntity<List<Product>> getAllItems(){
+    public ResponseEntity<List<Product>> getAllProducts(){
         return  ResponseEntity.ok().body(productService.getAllProducts());
     }
     @PostMapping("/add")
-    public  ResponseEntity<ProductAddDTO> addItems(@RequestBody ProductAddDTO productAddDTO){
+    public  ResponseEntity<ProductAddDTO> addProduct(@RequestBody ProductAddDTO productAddDTO){
         return ResponseEntity.ok().body(productService.addProducts(productAddDTO));
     }
     @PutMapping("/update/{id}")
-    public ResponseEntity<ProductUpdateDTO> updateItems(@PathVariable("id") String id, @RequestBody ProductUpdateDTO productUpdateDTO){
+    public ResponseEntity<ProductUpdateDTO> updateProduct(@PathVariable("id") String id, @RequestBody ProductUpdateDTO productUpdateDTO){
         return ResponseEntity.ok().body(productService.updateProductById(id, productUpdateDTO));
     }
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteItem(@PathVariable("id") String id) {
+    public ResponseEntity<String> deleteProduct(@PathVariable("id") String id) {
         productService.deleteProduct(id);
-        return ResponseEntity.ok().body("User successfully deleted!");
+        return ResponseEntity.ok().body("Product with id" + id +  "successfully deleted!");
     }
     @GetMapping("/category/{category}")
-    public  ResponseEntity<List<Product>> getByCategory(@PathVariable("category") String category){
+    public  ResponseEntity<List<Product>> getProductByCategory(@PathVariable("category") String category){
         return  ResponseEntity.ok().body(productService.findProductByCategory(category));
     }
     @GetMapping("/stock")
-    public  ResponseEntity<List<Product>> getByAvailability(@RequestParam("stockAvailability") boolean stockAvailability){
+    public  ResponseEntity<List<Product>> getProductByAvailability(@RequestParam("stockAvailability") boolean stockAvailability){
         return  ResponseEntity.ok().body(productService.findProductByAvailability(stockAvailability));
     }
 
