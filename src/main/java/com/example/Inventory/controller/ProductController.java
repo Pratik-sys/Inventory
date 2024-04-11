@@ -32,7 +32,7 @@ public class ProductController {
         productService.deleteProduct(id);
         return ResponseEntity.ok().body("User successfully deleted!");
     }
-    @GetMapping("/find-category/{category}")
+    @GetMapping("/category/{category}")
     public  ResponseEntity<List<Product>> getByCategory(@PathVariable("category") String category){
         return  ResponseEntity.ok().body(productService.findProductByCategory(category));
     }
