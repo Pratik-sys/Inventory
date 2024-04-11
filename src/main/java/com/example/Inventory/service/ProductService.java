@@ -6,12 +6,12 @@ import com.example.Inventory.model.Product;
 import java.util.List;
 
 public interface ProductService {
-    List<Product> getAllGroceries();
+    List<Product> getAllProducts();
     ProductAddDTO addProducts(ProductAddDTO productAddDTO);
-    List<Product> finByCategory(String category);
-    List<Product> findByAvailability(boolean stockAvailability);
+    List<Product> findProductByCategory(String category);
+    List<Product> findProductByAvailability(boolean stockAvailability);
     ProductUpdateDTO updateProductById(String id, ProductUpdateDTO productUpdateDTO);
-    void deleteItem(String id);
+    void deleteProduct(String id);
 
 }
 

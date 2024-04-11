@@ -23,16 +23,16 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     private ModelMapper modelMapper;
     @Override
-    public List<Product> getAllGroceries() {
+    public List<Product> getAllProducts() {
         return productRepo.findAll();
     }
 
     @Override
-    public List<Product> finByCategory(String category) {
+    public List<Product> findProductByCategory(String category) {
         return  productRepo.findByCategory(category);
     }
     @Override
-    public List<Product> findByAvailability(boolean stockAvailability) {
+    public List<Product> findProductByAvailability(boolean stockAvailability) {
         return productRepo.findByStockAvailability(stockAvailability);
     }
 
@@ -55,7 +55,7 @@ public class ProductServiceImpl implements ProductService {
 
     }
     @Override
-    public void deleteItem(String id) {
+    public void deleteProduct(String id) {
         productRepo.deleteById(id);
     }
 }

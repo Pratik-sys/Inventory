@@ -17,7 +17,7 @@ public class ProductController {
 
     @GetMapping("/listAll")
     public ResponseEntity<List<Product>> getAllItems(){
-        return  ResponseEntity.ok().body(productService.getAllGroceries());
+        return  ResponseEntity.ok().body(productService.getAllProducts());
     }
     @PostMapping("/add")
     public  ResponseEntity<ProductAddDTO> addItems(@RequestBody ProductAddDTO productAddDTO){
@@ -29,16 +29,16 @@ public class ProductController {
     }
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteItem(@PathVariable("id") String id) {
-        productService.deleteItem(id);
+        productService.deleteProduct(id);
         return ResponseEntity.ok().body("User successfully deleted!");
     }
     @GetMapping("/find-category/{category}")
     public  ResponseEntity<List<Product>> getByCategory(@PathVariable("category") String category){
-        return  ResponseEntity.ok().body(productService.finByCategory(category));
+        return  ResponseEntity.ok().body(productService.findProductByCategory(category));
     }
     @GetMapping("/stock")
     public  ResponseEntity<List<Product>> getByAvailability(@RequestParam("stockAvailability") boolean stockAvailability){
-        return  ResponseEntity.ok().body(productService.findByAvailability(stockAvailability));
+        return  ResponseEntity.ok().body(productService.findProductByAvailability(stockAvailability));
     }
 
 }
