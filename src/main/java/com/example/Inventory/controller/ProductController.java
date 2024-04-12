@@ -24,8 +24,8 @@ public class ProductController {
         return ResponseEntity.ok().body(productService.addProducts(productAddDTO));
     }
     @PutMapping("/update/{id}")
-    public ResponseEntity<ProductUpdateDTO> updateProduct(@PathVariable("id") String id, @RequestBody ProductUpdateDTO productUpdateDTO){
-        return ResponseEntity.ok().body(productService.updateProductById(id, productUpdateDTO));
+    public ResponseEntity<Product> updateProduct(@PathVariable("id") String id, @RequestBody Product product){
+        return ResponseEntity.ok().body(productService.updateProductById(id, product));
     }
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteProduct(@PathVariable("id") String id) {

@@ -10,7 +10,7 @@ public interface ProductService {
     ProductAddDTO addProducts(ProductAddDTO productAddDTO);
     List<Product> findProductByCategory(String category);
     List<Product> findProductByAvailability(boolean stockAvailability);
-    ProductUpdateDTO updateProductById(String id, ProductUpdateDTO productUpdateDTO);
+    Product updateProductById(String id, Product product);
     void deleteProduct(String id);
 
 }
