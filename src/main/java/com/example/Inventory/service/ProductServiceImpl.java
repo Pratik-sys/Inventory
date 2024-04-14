@@ -60,7 +60,7 @@ public class ProductServiceImpl implements ProductService {
         Product existingProduct = existingProductOptional.get();
         mergeEntities(existingProduct, product);
         productRepo.save(existingProduct);
-        return existingProduct;
+        return product;
 
 
 //        Product existingProduct = productRepo.findById(id).orElseThrow(()-> new NoSuchElementException("No product found with give id " + id));
@@ -98,7 +98,7 @@ public class ProductServiceImpl implements ProductService {
         Set<String> emptyNames = new HashSet<>();
         for(PropertyDescriptor pd : pds){
             Object srcValue = src.getPropertyValue(pd.getName());
-            if(srcValue == null || (srcValue instanceof Integer && (Integer) srcValue == 0)) emptyNames.add(pd.getName());
+            if(srcValue == null || (srcValue instanceof Integer && (Integer) srcValue == 0) || (srcValue instanceof Boolean && !(Boolean) srcValue)) emptyNames.add(pd.getName());
         }
         String[] result = new String[emptyNames.size()];
         return emptyNames.toArray(result);
