@@ -60,7 +60,7 @@ public class ProductServiceImpl implements ProductService {
         Product existingProduct = existingProductOptional.get();
         mergeEntities(existingProduct, product);
         productRepo.save(existingProduct);
-        return product;
+        return existingProduct;
 
 
 //        Product existingProduct = productRepo.findById(id).orElseThrow(()-> new NoSuchElementException("No product found with give id " + id));
