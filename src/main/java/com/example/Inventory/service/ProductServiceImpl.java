@@ -1,22 +1,15 @@
 package com.example.Inventory.service;
 
 import com.example.Inventory.dto.ProductAddDTO;
-import com.example.Inventory.dto.ProductUpdateDTO;
 import com.example.Inventory.model.Product;
 import com.example.Inventory.repository.ProductRepository;
+import com.example.Inventory.utils.Utils;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.BeanWrapper;
-import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
-import java.beans.PropertyDescriptor;
 import java.util.*;
 
 @Service
@@ -27,9 +20,10 @@ public class ProductServiceImpl implements ProductService {
     private ProductRepository productRepo;
     @Autowired
     private MongoTemplate mongoTemplate;
-
     @Autowired
     private ModelMapper modelMapper;
+    @Autowired
+    private Utils utils;
     @Override
     public List<Product> getAllProducts() {
         return productRepo.findAll();
@@ -52,13 +46,12 @@ public class ProductServiceImpl implements ProductService {
     }
     @Override
     public Product updateProductById(String id, Product product) {
-
         Optional<Product> existingProductOptional = productRepo.findById(id);
         if (existingProductOptional.isEmpty()){
             return null;
         }
         Product existingProduct = existingProductOptional.get();
-        mergeEntities(existingProduct, product);
+        utils.mergeEntities(existingProduct, product);
         productRepo.save(existingProduct);
         return existingProduct;
 
@@ -86,22 +79,6 @@ public class ProductServiceImpl implements ProductService {
 //        existingProduct.setLastUpdateTime(new Date());
 //        Product updateExistingProduct = productRepo.save(existingProduct);
 //        return modelMapper.map(updateExistingProduct, ProductUpdateDTO.class);
-    }
-
-    private  void  mergeEntities(Object existingEntity, Object updateEntity){
-        BeanUtils.copyProperties(updateEntity,existingEntity,getNullPropertyNames(updateEntity));
-    }
-
-    private String[] getNullPropertyNames(Object source) {
-        final BeanWrapper src = new BeanWrapperImpl(source);
-        PropertyDescriptor[] pds = src.getPropertyDescriptors();
-        Set<String> emptyNames = new HashSet<>();
-        for(PropertyDescriptor pd : pds){
-            Object srcValue = src.getPropertyValue(pd.getName());
-            if(srcValue == null || (srcValue instanceof Integer && (Integer) srcValue == 0) || (srcValue instanceof Boolean && !(Boolean) srcValue)) emptyNames.add(pd.getName());
-        }
-        String[] result = new String[emptyNames.size()];
-        return emptyNames.toArray(result);
     }
 
     @Override
