@@ -21,7 +21,12 @@ public class Utils {
         Set<String> emptyNames = new HashSet<>();
         for(PropertyDescriptor pd : pds){
             Object srcValue = src.getPropertyValue(pd.getName());
-            if(srcValue == null || (srcValue instanceof Integer && (Integer) srcValue == 0) || (srcValue instanceof Boolean && !(Boolean) srcValue)) emptyNames.add(pd.getName());
+            if(srcValue == null ||
+                    (srcValue instanceof Integer && (Integer) srcValue == 0) ||
+                    (srcValue instanceof Float && (Float) srcValue == 0.0f) ||
+                    (srcValue instanceof Double && (Double) srcValue == 0.0)){
+                emptyNames.add(pd.getName());
+            }
         }
         String[] result = new String[emptyNames.size()];
         return emptyNames.toArray(result);
