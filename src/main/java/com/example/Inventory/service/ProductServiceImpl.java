@@ -7,7 +7,6 @@ import com.example.Inventory.utils.Utils;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -18,8 +17,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private ProductRepository productRepo;
-    @Autowired
-    private MongoTemplate mongoTemplate;
+
     @Autowired
     private ModelMapper modelMapper;
     @Autowired

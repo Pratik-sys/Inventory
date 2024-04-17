@@ -3,11 +3,13 @@ package com.example.Inventory.utils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeanWrapperImpl;
+import org.springframework.stereotype.Component;
 
 import java.beans.PropertyDescriptor;
 import java.util.HashSet;
 import java.util.Set;
 
+@Component
 public class Utils {
     public  void  mergeEntities(Object existingEntity, Object updateEntity){
         BeanUtils.copyProperties(updateEntity,existingEntity,getNullPropertyNames(updateEntity));
