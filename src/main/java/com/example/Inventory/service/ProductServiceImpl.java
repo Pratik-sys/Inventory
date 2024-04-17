@@ -52,31 +52,6 @@ public class ProductServiceImpl implements ProductService {
         utils.mergeEntities(existingProduct, product);
         productRepo.save(existingProduct);
         return existingProduct;
-
-
-//        Product existingProduct = productRepo.findById(id).orElseThrow(()-> new NoSuchElementException("No product found with give id " + id));
-//        HashMap<String, String> details = new HashMap<>();
-//        details.put("name", "Macbook");
-//        details.put("price", String.valueOf(400000));
-//        Query query = new Query();
-//        Update update = new Update();
-//        query.addCriteria(Criteria.where("_id").is(id));
-//        for(Map.Entry<String, String> entry : details.entrySet()){
-//            update.set(entry.getKey(), entry.getValue());
-//            mongoTemplate.updateMulti(query,update, Product.class);
-//
-//        }
-//        update.set("name",details.get("name"));
-//        mongoTemplate.updateMulti(query,update, Product.class);
-
-//
-//        existingProduct.setName(productUpdateDTO.getName());
-//        existingProduct.setCategory(productUpdateDTO.getCategory());
-//        existingProduct.setQuantity(productUpdateDTO.getQuantity());
-//        existingProduct.setPrice(productUpdateDTO.getPrice());
-//        existingProduct.setLastUpdateTime(new Date());
-//        Product updateExistingProduct = productRepo.save(existingProduct);
-//        return modelMapper.map(updateExistingProduct, ProductUpdateDTO.class);
     }
 
     @Override
