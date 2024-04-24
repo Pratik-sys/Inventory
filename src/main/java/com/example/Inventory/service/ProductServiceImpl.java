@@ -2,6 +2,7 @@ package com.example.Inventory.service;
 
 import com.example.Inventory.dto.ProductAddDTO;
 import com.example.Inventory.model.Product;
+import com.example.Inventory.repository.ProductCustomRepositoryImpl;
 import com.example.Inventory.repository.ProductRepository;
 import com.example.Inventory.utils.Utils;
 import lombok.AllArgsConstructor;
@@ -22,6 +23,9 @@ public class ProductServiceImpl implements ProductService {
     private ModelMapper modelMapper;
     @Autowired
     private Utils utils;
+
+    @Autowired
+    private ProductCustomRepositoryImpl productCustomRepository;
     @Override
     public List<Product> getAllProducts() {
         return productRepo.findAll();
@@ -29,11 +33,11 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> findProductByCategory(String category) {
-        return  productRepo.findByCategory(category);
+        return  productCustomRepository.findByCategory(category);
     }
     @Override
     public List<Product> findProductByAvailability(boolean stockAvailability) {
-        return productRepo.findByStockAvailability(stockAvailability);
+        return productCustomRepository.findStockByAvailability(stockAvailability);
     }
 
     @Override
